@@ -1,0 +1,15 @@
+Respuesta del dialog json
+Respuesta del dialog 
+Respuesta del dialog Ups, no he entendido a que te refieres.
+Respuesta del dialog json
+Respuesta del dialog Hola Jordan Miranda, soy un agente virtual, ¿en que puedo ayudarte?, si deseas hablar con un agente fisico di salir
+Respuesta del dialog Hola Jordan Miranda, soy un agente virtual, ¿en que puedo ayudarte?, si deseas hablar con un agente fisico di salir
+Respuesta del dialog ¿Cómo?
+Respuesta del dialog Hola Jordan Miranda, soy un agente virtual, ¿en que puedo ayudarte?, si deseas hablar con un agente fisico di salir
+Respuesta del dialog ¿Podrías repetirlo, por favor?
+Respuesta del dialog Hola Jordan Miranda, soy un agente virtual, ¿en que puedo ayudarte?, si deseas hablar con un agente fisico di salir
+Respuesta del dialog ¿Decías?
+Respuesta del dialog Hola Jordan Miranda, soy un agente virtual, ¿en que puedo ayudarte?, si deseas hablar con un agente fisico di salir
+Respuesta del dialog ¿Decías?
+Respuesta del dialog Hola Jordan Miranda, soy un agente virtual, ¿en que puedo ayudarte?, si deseas hablar con un agente fisico di salir
+Respuesta del dialog ¿Disculpa?
