@@ -3,7 +3,6 @@ import pandas as pd
 import requests
 import json
 from asterisk.agi import AGI
-import speech_recognition as sr
 from google.cloud import dialogflowcx_v3beta1 as dialogflow
 from google.api_core.client_options import ClientOptions
 from google.cloud import texttospeech
@@ -16,8 +15,8 @@ import sqlite3
 project_id = 'earnest-smoke-397401'
 location = 'global'
 agent_id = '16b8c2b4-0c20-4d29-b4b3-4cc248b4dd89'
-session_id = '12345623232323232323378910'
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/home/jordan/agent_project/ApiKey/key.json'
+session_id = '1234562323232323dfd2323378910'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/home/apfigueroa/VirtualAgent/agent_project/ApiKey/key.json'
 client_options = ClientOptions(api_endpoint='dialogflow.googleapis.com')
 # Crear una instancia del cliente de sesiones
 session_client = dialogflow.SessionsClient(client_options=client_options)
@@ -27,13 +26,9 @@ session_path = session_client.session_path(project_id, location, agent_id, sessi
 
 tts_client = texttospeech.TextToSpeechClient()
 
-conn = sqlite3.connect('/home/jordan/agent_project/database/agentes.db')
+conn = sqlite3.connect('/home/apfigueroa/VirtualAgent/agent_project/database/agentes.db')
 cursor = conn.cursor()
 
-# Init
-record_file = '/home/jordan/agent_project/agentes/agente1/script/tempor'
-language = 'es-es'
-out_format = 'wav'
 volume_boost = 3.5
 # Text to speech
 argumento = ''
@@ -57,7 +52,7 @@ def iniciador(argm):
                     response_texts.append(message.text.text[0])
         # Unir los textos en un solo texto
         joined_response = " ".join(response_texts)
-        debug_log_file = '/home/jordan/agent_project/agentes/agente1/script/debug_log.txt'
+        debug_log_file = '/home/apfigueroa/VirtualAgent/agent_project/debug_log.txt'
         with open(debug_log_file, 'a') as log_file:
                 log_file.write(f"Respuesta del dialog {joined_response}\n")
         
@@ -85,7 +80,7 @@ def inijson(argm):
                     response_texts.append(message.text.text[0])
         # Unir los textos en un solo texto
         joined_response = " ".join(response_texts)
-        debug_log_file = '/home/jordan/agent_project/agentes/agente1/script/debug_log.txt'
+        debug_log_file = '/home/apfigueroa/VirtualAgent/agent_project/debug_log.txt'
         with open(debug_log_file, 'a') as log_file:
                 log_file.write(f"Respuesta del dialog {joined_response}\n")
 
@@ -114,7 +109,7 @@ def inicio_codigo():
                     response_texts.append(message.text.text[0])
         # Unir los textos en un solo texto
         joined_response = " ".join(response_texts)
-        debug_log_file = '/home/jordan/agent_project/agentes/agente1/script/debug_log.txt'
+        debug_log_file = '/home/apfigueroa/VirtualAgent/agent_project/debug_log.txt'
         with open(debug_log_file, 'a') as log_file:
                 log_file.write(f"Respuesta del dialog {joined_response}\n")
         
@@ -135,7 +130,7 @@ while True:
             if estado == 'Iniciando' and agente == 'Agente2':
                 cursor.execute("UPDATE Agentes SET Cedula=?, Extension = ?, Estado = ? WHERE id = ?", (cedula, extension, 'Iniciado', id))
                 iniciador('.')
-            elif( estado == 'Iniciado' and agente == 'Agente2'):
+            elif( estado == 'DISPONIBLE' and agente == 'Agente2'):
                 url = f"https://64753150e607ba4797dbb252.mockapi.io/user?Cedula={cedula}"
                 response = requests.get(url)            
                 if response.status_code == 200:

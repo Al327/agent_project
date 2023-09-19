@@ -2,7 +2,6 @@
 import requests
 import json
 from asterisk.agi import AGI
-import speech_recognition as sr
 from google.cloud import dialogflowcx_v3beta1 as dialogflow
 from google.api_core.client_options import ClientOptions
 from google.cloud import texttospeech

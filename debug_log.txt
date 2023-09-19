@@ -13,3 +13,4 @@ Respuesta del dialog Hola Jordan Miranda, soy un agente virtual, ¿en que puedo 
 Respuesta del dialog ¿Decías?
 Respuesta del dialog Hola Jordan Miranda, soy un agente virtual, ¿en que puedo ayudarte?, si deseas hablar con un agente fisico di salir
 Respuesta del dialog ¿Disculpa?
+Respuesta del dialog ¿Cómo?
