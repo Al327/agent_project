@@ -2,6 +2,8 @@
 import sys
 import os
 
+from asterisk.agi import AGI
+
 # Add the parent directory of the script to the Python path
 script_dir = os.path.dirname(os.path.abspath(__file__))
 project_dir = os.path.abspath(os.path.join(script_dir, ".."))
@@ -14,7 +16,7 @@ from utils.database import Database
 
 import sqlite3
 import sys
-from estados_agentes import EstadoAgente
+from models.estados_agentes import EstadoAgente
 
 
 

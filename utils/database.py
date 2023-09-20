@@ -2,7 +2,7 @@ import sqlite3
 import os
 from dotenv import load_dotenv
 
-from estados_agentes import EstadoAgente
+from models.estados_agentes import EstadoAgente
 from models.agent import Agente
 
 # Cargar variables de entorno desde el archivo .env
@@ -26,12 +26,12 @@ class Database:
         
         cursor = self.get_connection().cursor()
 
-        result = cursor.execute(f"SELECT id, dialogflow_agent_id, name, extention, status, client_identification FROM agents WHERE status = '${status}'")
+        result = cursor.execute(f"SELECT id, dialogflow_agent_id, name, extention, status, client_identification, audios_directory FROM agents WHERE status = '${status}'")
         
         agent = None
         
         if result is not None:
-            agent = Agente(result[0], result[1], result[2], result[3], result[4], result[5])
+            agent = Agente(result[0], result[1], result[2], result[3], result[4], result[5], result[6])
             
         return agent
     
@@ -51,13 +51,13 @@ class Database:
     def getAvailableAgent(self):
         
         cursor = self.get_connection().cursor()
-        cursor.execute(f"SELECT id, dialogflow_agent_id, name, extention, status, client_identification FROM agent WHERE status = '{EstadoAgente.DISPONIBLE.value}'")
+        cursor.execute(f"SELECT id, dialogflow_agent_id, name, extention, status, client_identification, audios_directory FROM agent WHERE status = '{EstadoAgente.DISPONIBLE.value}'")
         result = cursor.fetchone()
         
         agent = None
         
         if result is not None:
-            agent = Agente(result[0], result[1], result[2], result[3], result[4], result[5])
+            agent = Agente(result[0], result[1], result[2], result[3], result[4], result[5], result[6])
             
             
         return agent
