@@ -51,9 +51,7 @@ class Database:
     def getAvailableAgent(self):
         
         cursor = self.get_connection().cursor()
-
-        cursor.execute(f"SELECT id, dialogflow_agent_id, name, extention, status, client_identification FROM agents WHERE Estado = '${EstadoAgente.DISPONIBLE}'")
-        
+        cursor.execute(f"SELECT id, dialogflow_agent_id, name, extention, status, client_identification FROM agent WHERE status = '{EstadoAgente.DISPONIBLE.value}'")
         result = cursor.fetchone()
         
         agent = None
@@ -67,9 +65,8 @@ class Database:
     def updateAgentById(self, agent:Agente):
         
         cursor = self.get_connection().cursor()
-        
-        result = cursor.execute("UPDATE agents SET client_identification = ?, extention = ?, status = ?, name = ?, dialogflow_agent_id = ? WHERE id = ?", (agent.client_identification, agent.extention, agent.status, agent.name, agent.dialogflow_agent_id, agent.id))
-        
+        result = cursor.execute("UPDATE agent SET client_identification = ?, extention = ?, status = ?, name = ?, dialogflow_agent_id = ? WHERE id = ?", (agent.client_identification, agent.extention, agent.status, agent.name, agent.dialogflow_agent_id, agent.id))
+        self.get_connection().commit()
         return result
     
         
