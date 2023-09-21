@@ -31,11 +31,10 @@ try:
     
     if agent is not None:
         agent.client_identification = argumento
-        agent.status = EstadoAgente.INICIADO.value
+        agent.status = EstadoAgente.INICIANDO.value
         
         database.updateAgentById(agent)
         
-        agi.exec_command('ChannelRedirect', f'{canal},clase,{agent.extention},1')
         
     else:
         #TODO: Traspaso a la troncal

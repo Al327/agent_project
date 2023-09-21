@@ -5,8 +5,11 @@ from asterisk.agi import AGI
 import sys
 import os
 from pydub import AudioSegment
+# Add the parent directory of the script to the Python path
+script_dir = os.path.dirname(os.path.abspath(__file__))
+project_dir = os.path.abspath(os.path.join(script_dir, "../.."))
+sys.path.append(project_dir)
 from utils.database import Database
-
 client = texttospeech.TextToSpeechClient()
 
 # Init

@@ -26,7 +26,7 @@ class Database:
         
         cursor = self.get_connection().cursor()
 
-        result = cursor.execute(f"SELECT id, dialogflow_agent_id, name, extention, status, client_identification, audios_directory FROM agents WHERE status = '${status}'")
+        result = cursor.execute(f"SELECT id, dialogflow_agent_id, name, extention, status, client_identification, audios_directory FROM agent WHERE status = '${status}'")
         
         agent = None
         
@@ -38,13 +38,12 @@ class Database:
     def getAgentByExtention(self, extention):
         
         cursor = self.get_connection().cursor()
-
-        result = cursor.execute(f"SELECT id, dialogflow_agent_id, name, extention, status, client_identification FROM agents WHERE extention = '${extention}'")
-        
+        result = cursor.execute(f"SELECT id, dialogflow_agent_id, name, extention, status, client_identification, audios_directory FROM agent WHERE extention = '{extention}'")
+        result = cursor.fetchone()
         agent = None
-        
+        print(result)
         if result is not None:
-            agent = Agente(result[0], result[1], result[2], result[3], result[4], result[5])
+            agent = Agente(result[0], result[1], result[2], result[3], result[4], result[5],result[6])
             
         return agent
     
@@ -53,7 +52,6 @@ class Database:
         cursor = self.get_connection().cursor()
         cursor.execute(f"SELECT id, dialogflow_agent_id, name, extention, status, client_identification, audios_directory FROM agent WHERE status = '{EstadoAgente.DISPONIBLE.value}'")
         result = cursor.fetchone()
-        
         agent = None
         
         if result is not None:
