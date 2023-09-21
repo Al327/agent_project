@@ -1,1 +1,6 @@
 /environment
+__pycache__/
+audios/*
+!audios/.gitkeep
+/database
+/backup
