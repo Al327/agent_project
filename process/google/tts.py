@@ -13,8 +13,16 @@ from utils.database import Database
 client = texttospeech.TextToSpeechClient()
 
 # Init
+agi = AGI()
 #Obtiene el argunmento "recognition"
-textToConvertToAudio = 'Hola soy Eva tu asistente virtual'
+textToConvertToAudio = sys.argv[1]
+
+def play(audio):
+    try:
+        agi.exec_command('Playback', audio)
+    except Exception as e:
+        print(f"Error playing WAV file: {e}")
+
 
 
 
@@ -35,7 +43,7 @@ def text_to_speech(text_to_convert_to_audio):
         input=synthesis_input, voice=voice, audio_config=audio_config
     )
     
-    extention = '204'
+    extention = agi.env['agi_extension']
     database = Database()
     agent = database.getAgentByExtention(extention)
     
@@ -68,7 +76,7 @@ def text_to_speech(text_to_convert_to_audio):
     os.chmod(wav_file, 0o777)
     
     #Reproduce el wav con asterisk
-    print(f"{agent.audios_directory}/{agent.name}_audio")
+    play(f"{agent.audios_directory}/{agent.name}_audio")
     
 #! Script que realiza el proceso de conversion a audio el texto entregado en la variable recognition
 text_to_speech(textToConvertToAudio)

@@ -39,11 +39,13 @@ def speech_recognition():
         )
         
         response = client.recognize(request={"config": sr_config, "audio": audio}) 
-        
-        agi.set_variable(f"{agent.name}_response", response.results[0].alternatives[0].transcript)
+        for result in response.results:
+            agi.set_variable(f"{agent.name}_response",result.alternatives[0].transcript)
         
     except Exception as e:
-        pass
+        error_message = f'Error en el reconocimiento de voz. Tipo de excepción: {type(e).__name__}, Mensaje: {str(e)}'
+        agi.verbose(error_message, 1) 
+
     
 speech_recognition()
    

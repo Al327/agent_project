@@ -7,3 +7,5 @@ google-cloud-texttospeech
 googleapis-common-protos
 pandas
 python-dotenv
+pydub
+requests

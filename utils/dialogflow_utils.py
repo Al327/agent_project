@@ -14,13 +14,13 @@ class DialogflowUtils:
                 query_input=query_input
             )
         except Exception as e:
-            print("Error:", e)
+            pass
         
 
     @staticmethod
     def inijson(info):
         # Implementa el código para el método inijson aquí
-        print(f'Iniciando JSON con información: {info}')
+        pass
 
     @staticmethod
     def generateDialogFlowSessionId():
@@ -59,5 +59,4 @@ class DialogflowUtils:
             return response
         
         except Exception as e:
-            print("Error:", e)
             return None
