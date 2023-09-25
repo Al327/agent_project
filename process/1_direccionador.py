@@ -21,17 +21,16 @@ from models.estados_agentes import EstadoAgente
 
 agi = AGI()
 argumento = sys.argv[1]
-argumento_str = str(argumento)
+
 
 canal = agi.env['agi_channel']
-agi.exec_command('NoOp',argumento_str)
 agi.exec_command('NoOp',canal)
 try:
     database = Database()
     agent = database.getAvailableAgent()
     
     if agent is not None:
-        agent.client_identification = argumento_str
+        agent.client_identification = argumento
         agent.status = EstadoAgente.INICIANDO.value
         agent.dialogflow_session_id = DialogflowUtils.generateDialogFlowSessionId()
 
